@@ -132,6 +132,11 @@ app.get('/read', function(request, response) {
 
 app.use(express.static(__dirname+'/public'));
 
+//root
+app.get('/', function(request, response) {
+    response.redirect('/home.html');
+});
+
 var server=app.listen(8888, function() {
     console.log("We have started our server at http://localhost:8888");
 });
