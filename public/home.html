@@ -13,10 +13,100 @@
   <script src="js/resources/state-resource.js"></script>
 </head>
 <body class="container" ng-controller="MainController as vm">
-<p>working?</p>
+
 <!--Navbar -->
-<div class="container">
-  
+  <div class="container">
+    <div class="header">
+      <div class="navbar nav-pills pull-right" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+              <span class="sr-only"> Toggle Navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="#/home">TechniCOLORAngular</a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+            <!-- menu options only when logged in -->
+            <ul class="nav navbar-nav" ng-show="vm.isLoggedIn">
+              <li><a ng-href="#/home">Home</a></li>
+              <li><a ng-href="#/messages">Messages</a></li>
+              <li><a ng-href="/Logout">Logout</a></li>
+            </ul>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+<!-- navbar container -->
+
+<!-- jumbotron -->
+<div class="jumbotron text-center" ng-hide="vm.isLoggedIn"><h1>TechniCOLOR</h1></div>
+<!-- jumbotron -->
+
+<!-- Login Screen -->
+<div class="container" ng-hide="vm.isLoggedIn">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="page-header"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Sign In</h1>
+      <p>Username: <strong>jessica</strong> ,Password: <strong>vliet</strong></p>
+      <form class="form" name="form" ng-submit="vm.login(form)" novalidate>
+        <span ng-bind="vm.loginerror" class="locked" style="color:#ff0000;"></span>
+        <div class="form-group">
+            <label>User Name</label>
+            <input type="text" name="user" placeholder="username" class="form-control" ng-model="vm.user.username" required>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" name="password" placeholder="password" class="form-control" ng-model="vm.user.password" required>
+        </div>
+        <div>
+          <button class="btn btn-inverse btn-lg btn-login" type="submit">
+          Login
+          </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
+<!-- Login Screen -->
+
+<!-- views -->
+<div class="container">
+<div ng-view></div>
+</div>
+<!-- views -->
+
+<!-- footer -->
+<br>
+<div class="footer">
+  <div class="container text-center">
+    <p>Made with <span class="glyphicon glyphicon-heart" style="color:pink;"></span> from Jessica</p>
+  </div>
+</div>
+<!-- footer -->
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

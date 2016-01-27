@@ -10,6 +10,7 @@ fs.readFile("states.json", function(err, data) {
     states = JSON.parse(data.toString());
 });
 var users={
+    jessica: "vliet",
     alice: "password1",
     bob: "password2",
     charlie: "password3",
@@ -19,6 +20,7 @@ var msgs=[
     {user:"kilroy", phone: "123 555 1212", message:"was here!"}
 ]
 
+app.set('port', (process.env.PORT || 8888));
 app.use(cookieParser());
 app.use(bodyParser.json());
 
@@ -41,7 +43,12 @@ app.post('/login', function(request, response) {
 
 app.get('/logout', function(request, response) {
     response.clearCookie('login');
-    response.json({result: true});
+    response.redirect('/home.html');
+});
+
+//root
+app.get('/', function(request, response) {
+    response.redirect('/home.html');
 });
 
 function propSort(prop) {
@@ -132,11 +139,6 @@ app.get('/read', function(request, response) {
 
 app.use(express.static(__dirname+'/public'));
 
-//root
-app.get('/', function(request, response) {
-    response.redirect('/home.html');
-});
-
 var server=app.listen(8888, function() {
-    console.log("We have started our server at http://localhost:8888");
+    console.log("We have started our server at", app.get('port'));
 });
