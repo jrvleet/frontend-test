@@ -24,6 +24,7 @@ app.set('port', (process.env.PORT || 8888));
 app.use(cookieParser());
 app.use(bodyParser.json());
 
+//raises error 401 for an incorrect login
 function sendUnauthorized(response) {
     response.status(401);
     response.send("Unauthorized");
