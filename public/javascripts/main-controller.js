@@ -11,12 +11,14 @@ function MainController(Todo, State, $http, $cookies) {
 	vm.selState = 'AL';
 	vm.isLoggedIn = false;
 
+
 	// Retrieve all states at start of home.html
 	vm.states = State.get()
 					 .$promise.then(function (all) {
 					 	vm.states = all.res;
 					 	vm.statesList = all.res;
 					 });
+
 	// Retrieve by state by selecting the abbreviation from drop down list
 	vm.stateChanged = function() {
 		vm.states = State.get({abbreviation: vm.selState})
@@ -45,6 +47,7 @@ function MainController(Todo, State, $http, $cookies) {
 		}).error(function(data) {
 			vm.loginerror = "Error in server!";
 		});
+
 	};
 
 	//read messages
@@ -55,6 +58,8 @@ function MainController(Todo, State, $http, $cookies) {
 		 });
 	};
 	vm.readMessages();
+
+
 
 //add message click handler
 	vm.addMessage = function() {

@@ -32,17 +32,21 @@ function sendUnauthorized(response) {
 
 app.post('/login', function(request, response) {
     var user = request.body.user;
-    if (users[user] === undefined) {
+
+    //RAISES error 401 for an incorrect login
+    if (users[user] === undefined || users[user] !== request.body.password) {
         return sendUnauthorized(response);
     }
-    if (users[user] !== request.body.password) {
-        return sendUnauthorized(response);
-    }
+
+    //OUTPUT {"result": true} and a cookie is set
     response.cookie('login', user);
     response.json({result: true});
+
 });
 
+//Logout the user
 app.get('/logout', function(request, response) {
+    //OUTPUT Cookie is removed
     response.clearCookie('login');
     response.redirect('/home.html');
 });
@@ -51,6 +55,7 @@ app.get('/logout', function(request, response) {
 app.get('/', function(request, response) {
     response.redirect('/home.html');
 });
+
 
 function propSort(prop) {
     var dir=1;
@@ -77,8 +82,7 @@ app.get('/states/:abbrev', function(request, response) {
 
     for (var ind=0; ind<states.length; ind++) {
         if (states[ind].abbreviation == abbrev) {
-            response.json(states[ind]);
-            return false;
+            response.json(states[ind])
         }
     }
     response.status(404);
@@ -106,8 +110,14 @@ app.get('/states',function(request, response) {
     if (limit > 10) {
         limit = 10;
     }
+    for (var ind=0; ind<states.length; ind++) {
+        states[ind].city = states[ind]['most-populous-city'];
+    states[ind].miles = states[ind]['square-miles'];
+    states[ind].time1 = states[ind]['time-zone1'];
+    states[ind].time2 = states[ind]['time-zone2'];
+    }
     result = result.slice(offset, offset+limit);
-    response.json(result);
+    response.json({'res':result, 'len': states.length});
 });
 
 app.get('/secret', function(request, response) {
@@ -137,9 +147,8 @@ app.post('/write', function(request, response) {
 app.get('/read', function(request, response) {
     response.json(msgs);
 });
-
 app.use(express.static(__dirname+'/public'));
 
-var server=app.listen(8888, function() {
-    console.log("We have started our server at", app.get('port'));
+var server=app.listen(app.get('port'), function() {
+    console.log("We have started our server at ", app.get('port'));
 });

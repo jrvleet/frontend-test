@@ -9,6 +9,7 @@ angular.module('app')
 	function Todo($resource) {
 		var TodoResource = $resource('/read',{},{});
 		return TodoResource;
+		
 	}
 
 })();
