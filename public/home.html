@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Technicolor Front-End Test</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="https://code.angularjs.org/1.4.8/angular-resource.min.js"></script>
   <script src="https://code.angularjs.org/1.4.8/angular-route.min.js"></script>
@@ -29,7 +30,7 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/home">TechniCOLOR Angular</a>
+            <a class="navbar-brand" href="#/home">States Database</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
@@ -44,18 +45,17 @@
       </div>
     </div>
   </div>
-<!-- navbar container -->
+<!-- navbar -->
 
 <!-- jumbotron -->
-<div class="jumbotron text-center" ng-hide="vm.isLoggedIn"><h1>TechniCOLOR</h1></div>
+<div class="jumbotron" ng-hide="vm.isLoggedIn"><h1>States Database</h1></div>
 <!-- jumbotron -->
 
 <!-- Login Screen -->
 <div class="container" ng-hide="vm.isLoggedIn">
   <div class="row">
     <div class="col-sm-12">
-      <h1 class="page-header"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> /SIGN IN</h1>
-      <p>Username: <strong>jessica</strong> ,Password: <strong>vliet</strong></p>
+      <h1 class="page-header"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Sign In</h1>
       <form class="form" name="form" ng-submit="vm.login(form)" novalidate>
         <span ng-bind="vm.loginerror" class="locked" style="color:#ff0000;"></span>
         <div class="form-group">
@@ -67,7 +67,7 @@
           <input type="password" name="password" placeholder="password" class="form-control" ng-model="vm.user.password" required>
         </div>
         <div>
-            <button class="btn btn-inverse btn-lg btn-login" type="submit">
+            <button class="btn btn-primary btn-md btn-login" type="submit">
               Login
             </button>
           </div>
@@ -88,7 +88,7 @@
 <br>
 <div class="footer">
   <div class="container text-center">
-    <p>Made with <span class="glyphicon glyphicon-heart" style="color:pink;"></span> from Jessica</p>
+    <p>Made with <span class="glyphicon glyphicon-heart" style="color:#e74c3c;"></span> by Jessica</p>
   </div>
 </div>
 <!-- footer -->

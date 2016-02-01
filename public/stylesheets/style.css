@@ -1,0 +1,79 @@
+body {
+	background-color: #16a085;
+	color: #8e44ad;
+}
+
+.jumbotron {
+	text-align: center;
+	color: #1abc9c;
+	background-color: #9b59b6;
+}
+
+a:link {
+	color: #8e44ad;
+}
+
+a:hover {
+	background-color: #e74c3c;
+	color: #9b59b6;
+}
+
+a.hover {
+	color: #c0392b;
+}
+.nav>li>a:focus, 
+.nav>li>a:hover {
+	background-color: #e74c3c;
+}
+
+a:focus {
+	color: #e74c3c;
+}
+
+a:visited {
+	color: #8e44ad;
+}
+
+.list-group-item {
+	background-color: #ecf0f1;
+	border-color: #1abc9c;
+}
+
+a.nav {
+	color: #e74c3c;
+}
+
+.form-control {
+	
+	color: #e74c3c;
+}
+
+hr {
+	border: 1px solid #1abc9c;
+}
+
+.page-header {
+	border: 0px;
+}
+
+
+a.navbar-brand.hover {
+	background-color: #e74c3c;
+}
+
+.js-navbar-collapse {
+	color: #e74c3c;
+	background-color: #9b59b6;
+}
+
+#singleSelect {
+	color: #e74c3c;
+}
+
+
+
+
+
+
+
+
