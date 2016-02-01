@@ -4,9 +4,9 @@
 angular.module('app')
 	.controller('MainController', MainController);
 
-MainController.$inject = ['Todo', 'State', '$http', '$cookies'];
+MainController.$inject = ['Todo', 'State', '$http', '$cookies', '$scope'];
 
-function MainController(Todo, State, $http, $cookies) {
+function MainController(Todo, State, $http, $cookies, $scope) {
 	var vm = this;
 	vm.selState = 'AL';
 	vm.isLoggedIn = false;
@@ -75,6 +75,14 @@ function MainController(Todo, State, $http, $cookies) {
 		//read message again for update
 		vm.readMessages();
 	  };
+
+	$scope.delete = function(index) {
+		var delMessage = $scope.messages[index];
+
+		API.DeleteMessage({ id: delMessage.id }, function (success) {
+			$scope.messages.splice(index, 1);
+		});
+	};
 
 }
 
