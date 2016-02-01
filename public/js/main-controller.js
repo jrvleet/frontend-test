@@ -76,14 +76,6 @@ function MainController(Todo, State, $http, $cookies, $scope) {
 		vm.readMessages();
 	  };
 
-	$scope.delete = function(index) {
-		var delMessage = $scope.messages[index];
-
-		API.DeleteMessage({ id: delMessage.id }, function (success) {
-			$scope.messages.splice(index, 1);
-		});
-	};
-
 }
 
 
