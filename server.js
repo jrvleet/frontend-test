@@ -103,12 +103,12 @@ app.get('/states',function(request, response) {
     }
     var limit = request.query.limit;
     if (limit === undefined) {
-        limit = 10;
+        limit = 50;
     } else {
         limit = +limit;
     }
     if (limit > 10) {
-        limit = 10;
+        limit = 50;
     }
     for (var ind=0; ind<states.length; ind++) {
         states[ind].city = states[ind]['most-populous-city'];
